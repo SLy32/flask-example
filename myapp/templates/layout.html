@@ -1,6 +1,6 @@
 <!doctype html>
 <head>
-<title>{% include 'title.html' %}</title>
+<title>My first Flask</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="{{ url_for('.static', filename='vendor/jquery-1.12.3.min.js') }}" type="text/javascript"></script>
@@ -10,25 +10,10 @@
 <link  href="{{ url_for('.static', filename='vendor/bootstrap-3.3.6.min.css') }}" rel="stylesheet" type="text/css" crossorigin="anonymous">
 <script src="{{ url_for('.static', filename='vendor/bootstrap-3.3.6.min.js') }}" type="text/javascript" crossorigin="anonymous"></script>
 
-<script src="{{ url_for('.static', filename='vendor/d3-3.5.16.min.js') }}"> type="text/javascript"</script>
-<script src="{{ url_for('.static', filename='vendor/d3-tip-0.6.7.min.js') }}" type="text/javascript"></script>
-
-<script type="text/javascript">
-  window.model = window.model || {};
-  window.model.urlprefix = {{ config.URLPREFIX|tojson }};
-</script>
 
 <link href="{{ url_for('.static', filename='common.css') }}" rel="stylesheet" type="text/css">
 <script src="{{ url_for('.static', filename='common.js') }}" type="text/javascript"></script>
 
-{% if config.SENTRY_DSN %}
-  <script src="https://cdn.ravenjs.com/3.21.0/raven.min.js" crossorigin="anonymous"></script>
-  <script type="text/javascript">
-  Raven.config({{ config.SENTRY_DSN|tojson|safe }},
-    {release: {{ config.PHEWEB_VERSION|tojson|safe }} }
-  ).install()
-  </script>
-{% endif %}
 
 {% if config['GOOGLE_ANALYTICS_TRACKING_ID'] %}
   <script type="text/javascript">
@@ -67,13 +52,8 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ url_for('.phenotypes_page') }}" style="color: #333; font-weight: bold;">Phenotypes</a></li>
-                <li><a href="{{ url_for('.top_hits_page') }}" style="color: #333; font-weight: bold;">Top Hits</a></li>
-                <li><a href="{{ url_for('.random_page') }}" style="color: #333; font-weight: bold;">Random</a></li>
-                <li><a href="{{ url_for('.about_page') }}" style="color: #333; font-weight: bold;">About</a></li>
-                {% if current_user and current_user.is_authenticated %}
-                <li><a href="{{ url_for('.logout') }}" style="color: #333; font-weight: bold;">Logout ({{ current_user.email }})</a></li>
-                {% endif %}
+                <li>Phenotypes</li>
+
 
             </ul>
         </div><!-- /.navbar-collapse -->
@@ -81,16 +61,7 @@
 </nav>
 {% block body %}
 <div class="container-fluid">
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        <br><br> {# Don't get stuck behind the navbar #}
-        {% for message in messages %}
-          <div class="alert alert-danger" role="alert"><b>Error:</b> {{ message }}</div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
-    {% block contained %}
-    {% endblock %}
+   main
 </div>
 {% endblock %}
 </body>
