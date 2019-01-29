@@ -26,5 +26,14 @@ def hello():
     count = get_hit_count()
     return 'Hello from World! I have been seen {} times.\n'.format(count)
 
+
+@bp.route('/')
+def homepage():
+    return render_template('index.html')
+
+@bp.route('/about')
+def about_page():
+    return render_template('about.html')
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
