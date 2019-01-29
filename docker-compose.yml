@@ -8,6 +8,6 @@ services:
     volumes: # Development only!
       - .:/app
     ports:
-      - 8000:5000
+      - 8020:5000
   redis:
     image: "redis:alpine"
