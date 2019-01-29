@@ -1,0 +1,9 @@
+makefile
+Dockerfile
+utilities/*
+**/venv
+db/refinery_sql_db
+.pheweb
+.idea
+.dockerignore
+test

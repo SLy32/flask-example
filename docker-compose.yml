@@ -1,0 +1,13 @@
+version: '3'
+services:
+  data:
+    build: .
+    restart: "no"
+    environment:
+      - PYTHONUNBUFFERED=1 # Development only!
+    volumes: # Development only!
+      - .:/app
+    ports:
+      - 8000:5000
+  redis:
+    image: "redis:alpine"
